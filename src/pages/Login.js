@@ -1,10 +1,11 @@
 import React from 'react';
 import { IoIosSettings } from 'react-icons/io';
+import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import actionFetchToken from '../actions/actionThunk';
-
+import { receiveInfoPlayer } from '../actions';
 import '../assets/Login.css';
 
 const imgs = ['https://www.aeof.pt/wp-content/uploads/2014/05/qqsm.gif'];
@@ -37,9 +38,12 @@ class Login extends React.Component {
   }
 
   handleClick = async () => {
-    const { history, getSaveToken } = this.props;
+    const { history, getSaveToken, getInfoPlayer } = this.props;
+    const { name, email } = this.state;
+    const lowerCaseEmail = email.toLowerCase();
+    const emailHash = md5(lowerCaseEmail).toString();
     await getSaveToken();
-    console.log('clicou');
+    getInfoPlayer(name, email, emailHash);
     history.push('/game');
   }
 
@@ -87,10 +91,12 @@ class Login extends React.Component {
 Login.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
   getSaveToken: PropTypes.func.isRequired,
+  getInfoPlayer: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({
   getSaveToken: () => dispatch(actionFetchToken()),
+  getInfoPlayer: (...payload) => dispatch(receiveInfoPlayer(...payload)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);
