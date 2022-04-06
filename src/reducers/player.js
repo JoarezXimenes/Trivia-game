@@ -1,20 +1,21 @@
-import { LOGIN } from '../actions/index';
+import { RECEIVE_INFO_PLAYER } from '../actions/index';
 
 const INITIAL_STATE = {
   name: '',
   assertions: '',
-  score: '',
+  score: 0,
   gravatarEmail: '',
+  emailHash: '',
 };
 
-const player = (state = INITIAL_STATE, { type, payload }) => {
+const player = (state = INITIAL_STATE, { type, name, email, emailHash }) => {
   switch (type) {
-  case LOGIN:
+  case RECEIVE_INFO_PLAYER:
     return {
-      name: payload.name,
-      assertions: payload.assertions,
-      score: payload.score,
-      gravatarEmail: payload.gravatarEmail,
+      ...state,
+      name,
+      gravatarEmail: email,
+      emailHash,
     };
   default:
     return state;

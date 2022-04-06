@@ -4,6 +4,7 @@ import AnswerButton from '../components/AnswerButton';
 
 class GamePage extends React.Component {
   render() {
+    // const { gravatarEmail } = this.props;
     return (
       <>
         <Header />
@@ -26,7 +27,6 @@ class GamePage extends React.Component {
             </button>
           </aside>
         </main>
-
       </>
     );
   }

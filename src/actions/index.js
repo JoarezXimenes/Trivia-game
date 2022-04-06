@@ -1,6 +1,7 @@
 export const LOGIN = 'LOGIN';
 export const SAVE_TOKEN = 'SAVE_TOKEN';
 export const ERROR_RECEIVE_TOKEN = 'ERROR_RECEIVE_TOKEN';
+export const RECEIVE_INFO_PLAYER = 'RECEIVE_INFO_PLAYER';
 
 export const login = (payload) => ({
   type: LOGIN,
@@ -28,4 +29,11 @@ export const saveToken = (token) => ({
 export const errorReceiveToken = (error) => ({
   type: ERROR_RECEIVE_TOKEN,
   error,
+});
+
+export const receiveInfoPlayer = (name, email, emailHash) => ({
+  type: RECEIVE_INFO_PLAYER,
+  name,
+  email,
+  emailHash,
 });
