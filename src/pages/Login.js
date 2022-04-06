@@ -1,9 +1,11 @@
 import React from 'react';
-import '../assets/Login.css';
+import { IoIosSettings } from 'react-icons/io';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import actionFetchToken from '../actions/actionThunk';
+
+import '../assets/Login.css';
 
 const imgs = ['https://www.aeof.pt/wp-content/uploads/2014/05/qqsm.gif'];
 
@@ -37,6 +39,7 @@ class Login extends React.Component {
   handleClick = async () => {
     const { history, getSaveToken } = this.props;
     await getSaveToken();
+    console.log('clicou');
     history.push('/game');
   }
 
@@ -46,7 +49,7 @@ class Login extends React.Component {
       <section className="login-section">
         <Link to="/settings">
           <button type="button" data-testid="btn-settings">
-            Configurações
+            <IoIosSettings />
           </button>
         </Link>
         <div>

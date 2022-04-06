@@ -12,18 +12,17 @@ class Header extends React.Component {
           alt="Imagem do Usuário"
           data-testid="header-profile-picture"
         />
-        <p data-testid="header-player-name">{name}</p>
+        <p data-testid="header-player-name">{ name }</p>
         <p data-testid="header-score">{ placar }</p>
-
       </>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  gravatarImg: state.login.email,
-  name: state.login.user,
-  placar: state.game.placar,
+  gravatarImg: state.player.gravatarEmail,
+  name: state.player.name,
+  score: state.player.score,
 });
 
 Header.propTypes = {
