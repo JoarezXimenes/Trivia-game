@@ -8,9 +8,7 @@ export const fetchToken = async () => {
 };
 
 export const fetchApi = async (numberOfQuestions, tokenKey) => {
-  const { token } = tokenKey;
-  console.log(token);
-  const ENDPOINT = `https://opentdb.com/api.php?amount=${numberOfQuestions}&token=${token}`;
+  const ENDPOINT = `https://opentdb.com/api.php?amount=${numberOfQuestions}&token=${tokenKey}`;
   console.log(ENDPOINT);
   const response = await fetch(ENDPOINT);
   const json = await response.json();
