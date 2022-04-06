@@ -52,7 +52,7 @@ class Login extends React.Component {
     return (
       <section className="login-section">
         <Link to="/settings">
-          <button type="button" data-testid="btn-settings">
+          <button className="settings-button" type="button" data-testid="btn-settings">
             <IoIosSettings />
           </button>
         </Link>
@@ -75,6 +75,7 @@ class Login extends React.Component {
             onChange={ this.handleChange }
           />
           <button
+            className="play-button"
             type="submit"
             data-testid="btn-play"
             disabled={ validButton }
