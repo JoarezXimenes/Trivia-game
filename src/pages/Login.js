@@ -1,9 +1,11 @@
 import React from 'react';
-import { IoIosSettings } from 'react-icons/io';
+// import { IoIosSettings } from 'react-icons/io';
 import md5 from 'crypto-js/md5';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import UseAnimations from 'react-useanimations';
+import settings from 'react-useanimations/lib/settings';
 import actionFetchToken from '../actions/actionThunk';
 import { receiveInfoPlayer } from '../actions';
 import '../assets/Login.css';
@@ -52,9 +54,12 @@ class Login extends React.Component {
     return (
       <section className="login-section">
         <Link to="/settings">
-          <button className="settings-button" type="button" data-testid="btn-settings">
-            <IoIosSettings />
-          </button>
+          <UseAnimations
+            className="settings-button"
+            data-testid="btn-settings"
+            animation={ settings }
+            size={ 40 }
+          />
         </Link>
         <div>
           <img src={ imgs[0] } alt="Logo Trivia" />
