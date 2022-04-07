@@ -1,22 +1,26 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+
+import { fetchApi } from '../services/fecthApi';
 import AnswerButton from '../components/AnswerButton';
 import Header from '../components/Header';
-import { fetchApi } from '../services/fecthApi';
+
 import '../assets/GamePage.css';
 
 class GamePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      arrayTrivia: {},
+      arrayTrivia: [],
       questionNumber: 1,
       questionIndex: 0,
       options: [],
       correctAnswer: '',
       question: '',
       category: '',
+      // difficulty: '',
+      timer: 30,
     };
   }
 
@@ -30,6 +34,7 @@ class GamePage extends React.Component {
       arrayTrivia,
     });
     this.updateState();
+    this.countdown();
   }
 
   updateState = () => {
@@ -40,6 +45,7 @@ class GamePage extends React.Component {
       incorrect_answers: incorrectAnswers,
       question,
       category,
+      // difficulty,
     } = currentQuestion;
     const optionsArray = [...incorrectAnswers, correctAnswer];
     const MAGIC = 0.5;
@@ -49,13 +55,12 @@ class GamePage extends React.Component {
       correctAnswer,
       question,
       category,
+      // difficulty,
     });
   };
 
-  verifyAnswer = ({ target }) => {
+  revealAnswer = () => {
     const { correctAnswer } = this.state;
-    const { innerHTML } = target;
-    console.log(innerHTML);
     const buttons = document.querySelectorAll('.answer-button');
     buttons.forEach((button) => {
       button.disabled = true;
@@ -65,12 +70,56 @@ class GamePage extends React.Component {
         button.classList.add('wrong');
       }
     });
+  }
 
-    // innerHTML === correctAnswer ? 'ponto pra ele' : 'sem ponto pra ele';
+  hideAnswer = () => {
+    const { correctAnswer } = this.state;
+    const buttons = document.querySelectorAll('.answer-button');
+    buttons.forEach((button) => {
+      button.disabled = false;
+      if (button.innerHTML === correctAnswer) {
+        button.classList.remove('correct');
+      } else {
+        button.classList.remove('wrong');
+      }
+    });
+  }
+
+  verifyAnswer = ({ target }) => {
+    // const { correctAnswer } = this.state;
+    const { innerHTML } = target;
+    console.log(innerHTML);
+    this.revealAnswer();
   };
 
+  countdown = () => {
+    const MAGIC_TIME = 1000;
+    setInterval(this.decrementTimer, MAGIC_TIME);
+  }
+
+  decrementTimer = () => {
+    const { timer } = this.state;
+    console.log(timer);
+    if (timer > 0) {
+      this.setState({
+        timer: timer - 1,
+      });
+    } else {
+      this.setState({
+        timer: 0,
+      }, this.revealAnswer);
+    }
+  }
+
   render() {
-    const { options, correctAnswer, question, category, questionNumber } = this.state;
+    const {
+      options,
+      correctAnswer,
+      question,
+      category,
+      questionNumber,
+      timer,
+    } = this.state;
     return (
       <>
         <Header />
@@ -85,7 +134,10 @@ class GamePage extends React.Component {
                 { question }
               </p>
             </div>
-            <span className="time-left">Tempo restante: 20 segundos</span>
+            <span className="time-left">
+              Tempo restante:
+              { timer }
+            </span>
           </article>
           <aside className="answer-section">
             <div className="answers-card" data-testid="answer-options">
@@ -110,7 +162,10 @@ class GamePage extends React.Component {
                 })
               }
             </div>
-            <button type="button">
+            <button
+              type="button"
+              onClick={ this.hideAnswer }
+            >
               Próxima
             </button>
           </aside>
