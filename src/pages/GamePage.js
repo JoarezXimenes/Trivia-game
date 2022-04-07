@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import AnswerButton from '../components/AnswerButton';
 import Header from '../components/Header';
 import { fetchApi } from '../services/fecthApi';
+import '../assets/GamePage.css';
 
 class GamePage extends React.Component {
   constructor(props) {
@@ -28,17 +29,8 @@ class GamePage extends React.Component {
     this.setState({
       arrayTrivia,
     });
-    console.log(arrayTrivia);
     this.updateState();
-    // const {
-    //   correct_answer: correctAnswer, incorrect_answers: incorrectAnswers,
-    // } = responseTriviaApi[questionIndex];
-    // const options = [correctAnswer, ...incorrectAnswers];
   }
-
-  //  function shuffleArray(inputArray){
-  // inputArray.sort(()=> Math.random() - 0.5);
-  // }
 
   updateState = () => {
     const { arrayTrivia, questionIndex } = this.state;
@@ -50,10 +42,8 @@ class GamePage extends React.Component {
       category,
     } = currentQuestion;
     const optionsArray = [...incorrectAnswers, correctAnswer];
-    console.log(optionsArray);
     const MAGIC = 0.5;
     const options = optionsArray.sort(() => Math.random() - MAGIC);
-    console.log(options);
     this.setState({
       options,
       correctAnswer,
@@ -62,9 +52,25 @@ class GamePage extends React.Component {
     });
   };
 
+  verifyAnswer = ({ target }) => {
+    const { correctAnswer } = this.state;
+    const { innerHTML } = target;
+    console.log(innerHTML);
+    const buttons = document.querySelectorAll('.answer-button');
+    buttons.forEach((button) => {
+      button.disabled = true;
+      if (button.innerHTML === correctAnswer) {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('wrong');
+      }
+    });
+
+    // innerHTML === correctAnswer ? 'ponto pra ele' : 'sem ponto pra ele';
+  };
+
   render() {
     const { options, correctAnswer, question, category, questionNumber } = this.state;
-    console.log(correctAnswer);
     return (
       <>
         <Header />
@@ -90,11 +96,13 @@ class GamePage extends React.Component {
                       key={ index }
                       index={ index }
                       answer={ option }
+                      verifyAnswer={ this.verifyAnswer }
                       dataTestId="correct-answer"
                     />);
                   }
                   return (<AnswerButton
                     key={ index }
+                    verifyAnswer={ this.verifyAnswer }
                     index={ index }
                     answer={ option }
                     dataTestId="wrong-answer"
