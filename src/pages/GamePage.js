@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchApi } from '../services/fecthApi';
 import AnswerButton from '../components/AnswerButton';
 import Header from '../components/Header';
+import { updateScore } from '../actions/index';
 
 import '../assets/GamePage.css';
 
@@ -19,7 +20,7 @@ class GamePage extends React.Component {
       correctAnswer: '',
       question: '',
       category: '',
-      // difficulty: '',
+      difficulty: '',
       timer: 30,
     };
   }
@@ -45,7 +46,7 @@ class GamePage extends React.Component {
       incorrect_answers: incorrectAnswers,
       question,
       category,
-      // difficulty,
+      difficulty,
     } = currentQuestion;
     const optionsArray = [...incorrectAnswers, correctAnswer];
     const MAGIC = 0.5;
@@ -55,9 +56,29 @@ class GamePage extends React.Component {
       correctAnswer,
       question,
       category,
-      // difficulty,
+      difficulty,
     });
   };
+
+  updateScore = () => {
+    const { score, sendScore } = this.props;
+    const { difficulty, timer } = this.state;
+
+    const easy = 1;
+    const medium = 2;
+    const hard = 3;
+    const minScore = 10;
+    if (difficulty === 'hard') {
+      const newScore = score + (minScore + (timer * hard));
+      sendScore(newScore);
+    } else if (difficulty === 'medium') {
+      const newScore = score + (minScore + (timer * medium));
+      sendScore(newScore);
+    } else if (difficulty === 'easy') {
+      const newScore = score + (minScore + (timer * easy));
+      sendScore(newScore);
+    }
+  }
 
   revealAnswer = () => {
     const { correctAnswer } = this.state;
@@ -86,20 +107,25 @@ class GamePage extends React.Component {
   }
 
   verifyAnswer = ({ target }) => {
-    // const { correctAnswer } = this.state;
+    const { correctAnswer } = this.state;
     const { innerHTML } = target;
     console.log(innerHTML);
+    if (innerHTML === correctAnswer) {
+      this.updateScore();
+    }
     this.revealAnswer();
+    clearInterval(this.constSetInterval);
   };
+  // Com a ajudado do Sugamo, usando o this para para o setInterval ser algo visto por todo o componente.
+  // https://stackoverflow.com/questions/47254124/clear-interval-in-react-class
 
   countdown = () => {
     const MAGIC_TIME = 1000;
-    setInterval(this.decrementTimer, MAGIC_TIME);
+    this.constSetInterval = setInterval(this.decrementTimer, MAGIC_TIME);
   }
 
   decrementTimer = () => {
     const { timer } = this.state;
-    console.log(timer);
     if (timer > 0) {
       this.setState({
         timer: timer - 1,
@@ -107,7 +133,10 @@ class GamePage extends React.Component {
     } else {
       this.setState({
         timer: 0,
-      }, this.revealAnswer);
+      }, () => {
+        this.revealAnswer();
+        clearInterval(this.constSetInterval);
+      });
     }
   }
 
@@ -177,10 +206,19 @@ class GamePage extends React.Component {
 
 GamePage.propTypes = {
   token: PropTypes.string.isRequired,
+  score: PropTypes.number.isRequired,
+  sendScore: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   token: state.token,
+  score: state.player.score,
 });
 
-export default connect(mapStateToProps)(GamePage);
+const mapDispatchToProps = (dispatch) => ({
+  sendScore: (score) => dispatch(updateScore(score)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GamePage);
+
+// npm run cy:open

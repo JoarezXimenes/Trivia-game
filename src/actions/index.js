@@ -2,6 +2,7 @@ export const LOGIN = 'LOGIN';
 export const SAVE_TOKEN = 'SAVE_TOKEN';
 export const ERROR_RECEIVE_TOKEN = 'ERROR_RECEIVE_TOKEN';
 export const RECEIVE_INFO_PLAYER = 'RECEIVE_INFO_PLAYER';
+export const UPDATE_SCORE = 'UPDATE_SCORE';
 
 export const login = (payload) => ({
   type: LOGIN,
@@ -10,6 +11,11 @@ export const login = (payload) => ({
 
 export const FETCH_GRAVATAR = 'FETCH_GRAVATAR';
 export const GET_PLACAR = 'GET_PLACAR';
+
+export const updateScore = (score) => ({
+  type: UPDATE_SCORE,
+  score,
+});
 
 export const getPlacar = (payload) => ({
   type: GET_PLACAR,
