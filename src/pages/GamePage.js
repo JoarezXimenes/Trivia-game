@@ -117,6 +117,7 @@ class GamePage extends React.Component {
     clearInterval(this.constSetInterval);
   };
   // Com a ajudado do Sugamo, usando o this para para o setInterval ser algo visto por todo o componente.
+  // https://stackoverflow.com/questions/47254124/clear-interval-in-react-class
 
   countdown = () => {
     const MAGIC_TIME = 1000;
