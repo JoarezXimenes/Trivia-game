@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-
-import { fetchApi } from '../services/fecthApi';
+import { updateScore } from '../actions/index';
+import '../assets/GamePage.css';
 import AnswerButton from '../components/AnswerButton';
 import Header from '../components/Header';
-import { updateScore } from '../actions/index';
-
-import '../assets/GamePage.css';
+import { fetchApi } from '../services/fecthApi';
 
 class GamePage extends React.Component {
   constructor(props) {
@@ -22,12 +20,12 @@ class GamePage extends React.Component {
       category: '',
       difficulty: '',
       timer: 30,
+      showButton: false,
     };
   }
 
   async componentDidMount() {
     const { token } = this.props;
-    // const { questionIndex } = this.state;
     const numberOfQuestions = 5;
     const objectTrivia = await fetchApi(numberOfQuestions, token);
     const arrayTrivia = objectTrivia.results;
@@ -35,7 +33,6 @@ class GamePage extends React.Component {
       arrayTrivia,
     });
     this.updateState();
-    this.countdown();
   }
 
   updateState = () => {
@@ -57,7 +54,7 @@ class GamePage extends React.Component {
       question,
       category,
       difficulty,
-    });
+    }, this.countdown);
   };
 
   updateScore = () => {
@@ -113,6 +110,7 @@ class GamePage extends React.Component {
     if (innerHTML === correctAnswer) {
       this.updateScore();
     }
+    this.setState({ showButton: true });
     this.revealAnswer();
     clearInterval(this.constSetInterval);
   };
@@ -122,6 +120,24 @@ class GamePage extends React.Component {
   countdown = () => {
     const MAGIC_TIME = 1000;
     this.constSetInterval = setInterval(this.decrementTimer, MAGIC_TIME);
+  }
+
+  nextQuestion = () => {
+    const { questionNumber, questionIndex } = this.state;
+    const { history } = this.props;
+    const CINCO = 5;
+    if (questionNumber === CINCO) {
+      history.push('/result-page');
+    }
+    this.setState({
+      questionIndex: questionIndex + 1,
+      questionNumber: questionNumber + 1,
+      showButton: false,
+      timer: 30,
+    }, () => {
+      this.updateState();
+      this.hideAnswer();
+    });
   }
 
   decrementTimer = () => {
@@ -136,6 +152,7 @@ class GamePage extends React.Component {
       }, () => {
         this.revealAnswer();
         clearInterval(this.constSetInterval);
+        this.setState({ showButton: true });
       });
     }
   }
@@ -148,6 +165,7 @@ class GamePage extends React.Component {
       category,
       questionNumber,
       timer,
+      showButton,
     } = this.state;
     return (
       <>
@@ -191,12 +209,17 @@ class GamePage extends React.Component {
                 })
               }
             </div>
-            <button
-              type="button"
-              onClick={ this.hideAnswer }
-            >
-              Próxima
-            </button>
+            {
+              showButton && (
+                <button
+                  type="button"
+                  onClick={ this.nextQuestion }
+                  data-testid="btn-next"
+                >
+                  Next
+                </button>
+              )
+            }
           </aside>
         </main>
       </>
@@ -205,6 +228,7 @@ class GamePage extends React.Component {
 }
 
 GamePage.propTypes = {
+  history: PropTypes.objectOf(PropTypes.any).isRequired,
   token: PropTypes.string.isRequired,
   score: PropTypes.number.isRequired,
   sendScore: PropTypes.func.isRequired,
@@ -220,5 +244,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GamePage);
-
-// npm run cy:open
