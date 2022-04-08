@@ -24,6 +24,27 @@ class RankingPage extends Component {
   }
 }
 
+/*
+  FAZER UMA TABLE RENDERIZANDO O ARRAY RANKING DO LOCALSTORAGE - PEGANDO O SCORE DE CADA OBJETO E COLOCANDO EM ORDEM ALFABÉTICA
+
+ <table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Nome</th>
+      <th>Pontuação</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>**pic**</td>
+      <td>Maria Anders</td>
+      <td>1000</td>
+    </tr>
+  </tbody>
+</table>
+*/
+
 RankingPage.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
 };
