@@ -106,7 +106,6 @@ class GamePage extends React.Component {
   verifyAnswer = ({ target }) => {
     const { correctAnswer } = this.state;
     const { innerHTML } = target;
-    console.log(innerHTML);
     if (innerHTML === correctAnswer) {
       this.updateScore();
     }

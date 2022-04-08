@@ -1,4 +1,4 @@
-import { RECEIVE_INFO_PLAYER, UPDATE_SCORE } from '../actions/index';
+import { RECEIVE_INFO_PLAYER, UPDATE_SCORE, RESET_SCORE } from '../actions/index';
 
 const INITIAL_STATE = {
   name: '',
@@ -22,6 +22,12 @@ const player = (state = INITIAL_STATE, action) => {
       ...state,
       score: action.score,
       assertions: state.assertions + 1,
+    };
+  case RESET_SCORE:
+    return {
+      ...state,
+      score: 0,
+      assertions: 0,
     };
   default:
     return state;
