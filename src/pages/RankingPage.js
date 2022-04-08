@@ -8,6 +8,8 @@ class RankingPage extends Component {
     history.push('/');
   }
 
+  // renderRanking = () = {}
+
   render() {
     return (
       <div>
@@ -26,6 +28,8 @@ class RankingPage extends Component {
 
 /*
   FAZER UMA TABLE RENDERIZANDO O ARRAY RANKING DO LOCALSTORAGE - PEGANDO O SCORE DE CADA OBJETO E COLOCANDO EM ORDEM ALFABÉTICA
+
+  const rankingArray = localStorage.getItem('ranking');
 
  <table>
   <thead>
