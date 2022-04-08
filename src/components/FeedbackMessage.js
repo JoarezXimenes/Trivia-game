@@ -2,10 +2,26 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class FeedbackMessage extends Component {
-  render() {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //   }
+  // }
+
+  verifyAssertions = () => {
     const { assertions } = this.props;
+    const minAsserts = 3;
+    if (assertions < minAsserts) {
+      return 'Could be better...';
+    }
+    return 'Well Done!';
+  };
+
+  render() {
     return (
-      <h2 data-testid="feedback-text">{assertions}</h2>
+      <h2 data-testid="feedback-text">
+        { this.verifyAssertions() }
+      </h2>
     );
   }
 }

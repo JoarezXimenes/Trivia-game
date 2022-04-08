@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class ScoreMessage extends Component {
   render() {
@@ -9,17 +9,20 @@ class ScoreMessage extends Component {
         <p>
           Você acertou
           <span data-testid="feedback-total-question">
+            &nbsp;
             { assertions }
           </span>
-          { assertions > 1
-            ? 'questões'
-            : 'questão' }
+          { assertions !== 1
+            ? ' questões'
+            : ' questão' }
         </p>
         <p>
           Um total de
+          &nbsp;
           <span data-testid="feedback-total-score">
             { score }
           </span>
+          &nbsp;
           pontos
         </p>
       </>

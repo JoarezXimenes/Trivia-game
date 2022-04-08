@@ -3,6 +3,7 @@ export const SAVE_TOKEN = 'SAVE_TOKEN';
 export const ERROR_RECEIVE_TOKEN = 'ERROR_RECEIVE_TOKEN';
 export const RECEIVE_INFO_PLAYER = 'RECEIVE_INFO_PLAYER';
 export const UPDATE_SCORE = 'UPDATE_SCORE';
+export const RESET_SCORE = 'RESET_SCORE';
 
 export const login = (payload) => ({
   type: LOGIN,
@@ -42,4 +43,8 @@ export const receiveInfoPlayer = (name, email, emailHash) => ({
   name,
   email,
   emailHash,
+});
+
+export const resetScore = () => ({
+  type: RESET_SCORE,
 });
