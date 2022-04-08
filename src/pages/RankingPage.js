@@ -8,12 +8,38 @@ class RankingPage extends Component {
     history.push('/');
   }
 
-  // renderRanking = () = {}
+  renderRanking = () => {
+    const getArray = JSON.parse(localStorage.getItem('ranking'));
+    const rankedArray = getArray.sort((a, b) => b.score - a.score);
+    return rankedArray.map((player, position) => (
+      <tr key={ position }>
+        <td>{ position + 1 }</td>
+        <td>
+          <img src={ player.picture } alt={ player.name } />
+        </td>
+        <td data-testid={ `player-name-${position}` }>{ player.name }</td>
+        <td data-testid={ `player-score-${position}` }>{ player.score }</td>
+      </tr>
+    ));
+  }
 
   render() {
     return (
       <div>
-        <h1 data-testid="ranking-title">Title</h1>
+        <h1 data-testid="ranking-title">Ranking</h1>
+        <table>
+          <thead>
+            <tr>
+              <th>Position</th>
+              <th>Avatar</th>
+              <th>Name</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            { this.renderRanking() }
+          </tbody>
+        </table>
         <button
           onClick={ this.goHome }
           type="button"
@@ -25,29 +51,6 @@ class RankingPage extends Component {
     );
   }
 }
-
-/*
-  FAZER UMA TABLE RENDERIZANDO O ARRAY RANKING DO LOCALSTORAGE - PEGANDO O SCORE DE CADA OBJETO E COLOCANDO EM ORDEM ALFABÉTICA
-
-  const rankingArray = localStorage.getItem('ranking');
-
- <table>
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Nome</th>
-      <th>Pontuação</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>**pic**</td>
-      <td>Maria Anders</td>
-      <td>1000</td>
-    </tr>
-  </tbody>
-</table>
-*/
 
 RankingPage.propTypes = {
   history: PropTypes.objectOf(PropTypes.any).isRequired,
