@@ -38,7 +38,7 @@ class ResultPage extends Component {
       localStorage.setItem('ranking', [stringPlayerObj]);
     } else if (localStorage.ranking) {
       const ranking = JSON.parse(localStorage.getItem('ranking'));
-      const newRankingArray = [...ranking, playerObj];
+      const newRankingArray = [...ranking, playerObj[0]];
       localStorage.setItem('ranking', JSON.stringify(newRankingArray));
     }
   }
