@@ -1,8 +1,82 @@
 /* stylelint-disable linebreaks */
+
+/* Com a ajudado do Sugamo,
+ usando o this para para o setInterval ser algo visto por todo o componente
+https://stackoverflow.com/questions/47254124/clear-interval-in-react-class */
+
 .wrong {
+  background-color: red;
   border: 3px solid red;
 }
 
 .correct {
+  background-color: rgb(6, 240, 15);
   border: 3px solid rgb(6, 240, 15);
+}
+
+/* ============= QUESTION SECTION */
+.question-section {
+  background-color: rgb(233, 233, 233);
+  font-size: 1.2rem;
+  padding: 20px 30px;
+  text-align: center;
+}
+
+.question-card {
+  background-color: lightblue;
+  border: 5px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgb(143, 143, 143);
+  padding: 10px;
+}
+
+.time-left {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* ============= ANSWER SECTION */
+.answer-section {
+  align-items: center;
+  background-color: rgb(233, 233, 233);
+  display: flex;
+  flex-direction: column;
+  height: 55vh;
+  justify-content: flex-start;
+}
+
+.answers-card {
+  background-color: lightblue;
+  border: 5px solid black;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgb(143, 143, 143);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 15px;
+  width: 65%;
+}
+
+.answers-card button {
+  border-radius: 5px;
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+.answers-card button:hover {
+  background-color: rgba(255, 255, 60, 0.588);
+}
+
+.next-button {
+  font-size: 1.2rem;
+  margin-top: 20px;
+  opacity: 0.8;
+  padding: 5px 20px;
+}
+
+.next-button:hover {
+  cursor: pointer;
+  opacity: 1;
 }

@@ -1,20 +1,38 @@
+/* stylelint-disable linebreaks */
+body {
+  background-color: rgb(242, 242, 242);
+}
+
 .login-section {
-  align-items: center;
+  align-items: flex-end;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px rgb(143, 143, 143);
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  margin: 100px auto;
+  justify-content: flex-end;
+  margin: 22.5vh auto;
   width: 50%;
 }
 
 .login-section img {
+  margin-bottom: 28px;
   width: 150px;
 }
 
 .login-section input {
+  border-radius: 5px;
   font-size: 1.2rem;
   margin: 10px 0;
   padding: 5px 10px;
+  width: 90%;
+}
+
+.box {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
   width: 100%;
 }
 

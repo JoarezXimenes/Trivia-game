@@ -1,0 +1,31 @@
+/* stylelint-disable linebreaks */
+header {
+  align-items: center;
+  background-color: lightblue;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+header h1 {
+  padding-left: 10px;
+}
+
+.right-header {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-right: 40px;
+  width: 10%;
+}
+
+.right-header img {
+  height: 40px;
+  padding-right: 15px;
+}
+
+.right-header p {
+  padding-right: 20px;
+}
