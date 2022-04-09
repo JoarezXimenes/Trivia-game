@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import UseAnimations from 'react-useanimations';
 import settings from 'react-useanimations/lib/settings';
+import { GiTrophy } from 'react-icons/gi';
 import actionFetchToken from '../actions/actionThunk';
 import { receiveInfoPlayer } from '../actions';
 import '../assets/Login.css';
@@ -53,14 +54,22 @@ class Login extends React.Component {
     const { email, name, validButton } = this.state;
     return (
       <section className="login-section">
-        <Link to="/settings">
-          <UseAnimations
-            className="settings-button"
-            data-testid="btn-settings"
-            animation={ settings }
-            size={ 40 }
-          />
-        </Link>
+        <div className="container-link">
+          <Link to="/ranking">
+            <GiTrophy
+              className="ranking-button"
+              data-testid="btn-ranking"
+            />
+          </Link>
+          <Link to="/settings">
+            <UseAnimations
+              className="settings-button"
+              data-testid="btn-settings"
+              animation={ settings }
+              size={ 45 }
+            />
+          </Link>
+        </div>
         <div className="box">
           <img src={ imgs[0] } alt="Logo Trivia" />
           <input

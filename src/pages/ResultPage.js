@@ -53,7 +53,6 @@ class ResultPage extends Component {
         <main>
           <FeedbackMessage assertions={ assertions } />
           <ScoreMessage score={ score } assertions={ assertions } />
-
           <button
             className="button-ranking"
             type="button"
