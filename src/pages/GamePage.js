@@ -113,8 +113,6 @@ class GamePage extends React.Component {
     this.revealAnswer();
     clearInterval(this.constSetInterval);
   };
-  // Com a ajudado do Sugamo, usando o this para para o setInterval ser algo visto por todo o componente.
-  // https://stackoverflow.com/questions/47254124/clear-interval-in-react-class
 
   countdown = () => {
     const MAGIC_TIME = 1000;
@@ -177,13 +175,17 @@ class GamePage extends React.Component {
               </p>
               <p data-testid="question-text">
                 {questionNumber}
+                .&nbsp;
                 { question }
               </p>
             </div>
-            <span className="time-left">
+            <p>
               Tempo restante:
-              { timer }
-            </span>
+              <span className="time-left">
+              &nbsp;
+                { timer }
+              </span>
+            </p>
           </article>
           <aside className="answer-section">
             <div className="answers-card" data-testid="answer-options">
@@ -214,6 +216,7 @@ class GamePage extends React.Component {
                   type="button"
                   onClick={ this.nextQuestion }
                   data-testid="btn-next"
+                  className="next-button"
                 >
                   Next
                 </button>

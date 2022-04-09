@@ -61,7 +61,7 @@ class Login extends React.Component {
             size={ 40 }
           />
         </Link>
-        <div>
+        <div className="box">
           <img src={ imgs[0] } alt="Logo Trivia" />
           <input
             data-testid="input-player-name"
