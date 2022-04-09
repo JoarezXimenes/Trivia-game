@@ -2,6 +2,16 @@ body {
   background-color: rgb(242, 242, 242);
 }
 
+main {
+  text-align: center;
+}
+
+.container-ranking-page {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 h1 {
   background-color: rgb(233, 233, 233);
   font-size: 1.2rem;
@@ -31,9 +41,9 @@ button {
 table {
   border: 1px solid black;
   font-size: 1.2rem;
-  margin-left: 50px;
-  padding: 20px 30px;
+  margin: auto;
   text-align: center;
+  width: 50%;
 }
 
 td {
@@ -50,3 +60,4 @@ th {
   padding-top: 12px;
   text-align: center;
 }
+

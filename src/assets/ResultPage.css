@@ -1,3 +1,9 @@
+main {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .button-ranking {
   align-items: center;
   background-color: lightblue;
