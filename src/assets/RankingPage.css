@@ -27,26 +27,26 @@ button {
   padding-bottom: 20px;
   width: 50%;
 }
- 
+
 table {
   border: 1px solid black;
   font-size: 1.2rem;
   margin-left: 50px;
   padding: 20px 30px;
-  text-align: center
+  text-align: center;
 }
 
 td {
   border: 1px solid black;
   padding: 20px;
-  text-align: center
+  text-align: center;
 }
 
 th {
+  background-color: lightblue;
   border: 1px solid black;
   padding: 20px 30px;
   padding-top: 12px;
   text-align: center;
-  background-color: lightblue;
   color: white;
 }
