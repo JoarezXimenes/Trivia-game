@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { AiFillHome } from 'react-icons/ai';
+import '../assets/RankingPage.css';
 
 class RankingPage extends Component {
   goHome = () => {
@@ -41,6 +42,7 @@ class RankingPage extends Component {
           </tbody>
         </table>
         <button
+          className="button-home"
           onClick={ this.goHome }
           type="button"
           data-testid="btn-go-home"

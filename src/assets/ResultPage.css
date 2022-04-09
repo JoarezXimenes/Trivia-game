@@ -1,0 +1,19 @@
+.button-ranking {
+    align-items: center;
+    background-color:lightblue;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    width: 50%;
+}
+
+.button-play-again {
+    align-items: center;
+    background-color: lightblue;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+    width: 50%;
+}

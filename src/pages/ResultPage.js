@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { GiCycle, GiTrophy } from 'react-icons/gi';
 import { connect } from 'react-redux';
+import { resetScore } from '../actions/index';
+import '../assets/ResultPage.css';
 import FeedbackMessage from '../components/FeedbackMessage';
 import Header from '../components/Header';
 import ScoreMessage from '../components/ScoreMessage';
-import { resetScore } from '../actions/index';
 
 class ResultPage extends Component {
   componentDidMount = () => {
@@ -53,19 +55,23 @@ class ResultPage extends Component {
           <ScoreMessage score={ score } assertions={ assertions } />
 
           <button
+            className="button-ranking"
             type="button"
             data-testid="btn-ranking"
             onClick={ this.viewRanking }
           >
-            VER RANKING
+            Ranking
+            <GiTrophy />
           </button>
 
           <button
+            className="button-play-again"
             onClick={ this.restartGame }
             type="button"
             data-testid="btn-play-again"
           >
             Play Again
+            <GiCycle />
           </button>
         </main>
       </>
