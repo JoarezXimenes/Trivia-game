@@ -50,7 +50,7 @@ class ResultPage extends Component {
     return (
       <>
         <Header />
-        <main>
+        <main className="button-main">
           <FeedbackMessage assertions={ assertions } />
           <ScoreMessage score={ score } assertions={ assertions } />
           <button

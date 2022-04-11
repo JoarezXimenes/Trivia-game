@@ -28,7 +28,7 @@ class RankingPage extends Component {
     return (
       <div className="container-ranking-page">
         <h1 data-testid="ranking-title">Ranking</h1>
-        <table>
+        <table className="table-container">
           <thead>
             <tr>
               <th>Position</th>

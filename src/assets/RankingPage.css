@@ -38,7 +38,7 @@ button {
   width: 50%;
 }
 
-table {
+.table-container {
   border: 1px solid black;
   font-size: 1.2rem;
   margin: auto;
