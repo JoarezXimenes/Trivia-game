@@ -196,7 +196,7 @@ class GamePage extends React.Component {
                     return (<AnswerButton
                       key={ index }
                       index={ index }
-                      answer={ option }
+                      answer={ he.decode(option) }
                       verifyAnswer={ this.verifyAnswer }
                       dataTestId="correct-answer"
                     />);
@@ -205,7 +205,7 @@ class GamePage extends React.Component {
                     key={ index }
                     verifyAnswer={ this.verifyAnswer }
                     index={ index }
-                    answer={ option }
+                    answer={ he.decode(option) }
                     dataTestId="wrong-answer"
                   />);
                 })
