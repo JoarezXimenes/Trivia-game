@@ -53,52 +53,54 @@ class Login extends React.Component {
   render() {
     const { email, name, validButton } = this.state;
     return (
-      <section className="login-section">
-        <div className="container-link">
-          <Link to="/ranking">
-            <GiTrophy
-              className="ranking-button"
-              data-testid="btn-ranking"
+      <div className="root">
+        <section className="login-section">
+          <div className="container-link">
+            <Link to="/ranking">
+              <GiTrophy
+                className="ranking-button"
+                data-testid="btn-ranking"
+              />
+            </Link>
+            <Link to="/settings">
+              <UseAnimations
+                className="settings-button"
+                data-testid="btn-settings"
+                animation={ settings }
+                size={ 45 }
+              />
+            </Link>
+          </div>
+          <div className="box">
+            <img src={ imgs[0] } alt="Logo Trivia" />
+            <input
+              data-testid="input-player-name"
+              type="text"
+              name="name"
+              value={ name }
+              placeholder="Insira seu nome"
+              onChange={ this.handleChange }
             />
-          </Link>
-          <Link to="/settings">
-            <UseAnimations
-              className="settings-button"
-              data-testid="btn-settings"
-              animation={ settings }
-              size={ 45 }
+            <input
+              data-testid="input-gravatar-email"
+              name="email"
+              type="email"
+              value={ email }
+              placeholder="Insira seu email"
+              onChange={ this.handleChange }
             />
-          </Link>
-        </div>
-        <div className="box">
-          <img src={ imgs[0] } alt="Logo Trivia" />
-          <input
-            data-testid="input-player-name"
-            type="text"
-            name="name"
-            value={ name }
-            placeholder="Insira seu nome"
-            onChange={ this.handleChange }
-          />
-          <input
-            data-testid="input-gravatar-email"
-            name="email"
-            type="email"
-            value={ email }
-            placeholder="Insira seu email"
-            onChange={ this.handleChange }
-          />
-          <button
-            className="play-button"
-            type="submit"
-            data-testid="btn-play"
-            disabled={ validButton }
-            onClick={ this.handleClick }
-          >
-            Play
-          </button>
-        </div>
-      </section>
+            <button
+              className="play-button"
+              type="submit"
+              data-testid="btn-play"
+              disabled={ validButton }
+              onClick={ this.handleClick }
+            >
+              Play
+            </button>
+          </div>
+        </section>
+      </div>
     );
   }
 }

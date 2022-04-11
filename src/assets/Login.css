@@ -1,6 +1,15 @@
 /* stylelint-disable linebreaks */
 body {
-  background-color: rgb(242, 242, 242);
+  background-image: linear-gradient(to right, #291750 , lightblue);
+  background: rgb(108,50,125);
+  background: linear-gradient(0deg, rgba(108,50,125,1) 0%, rgba(97,53,149,1) 29%, rgba(77,80,190,1) 72%, rgba(75,77,148,1) 99%);
+  height: 100vh;
+}
+
+.root {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
 }
 
 .login-section {
@@ -11,7 +20,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  margin: 22.5vh auto;
+  margin-top: 15vh;
   width: 50%;
 }
 

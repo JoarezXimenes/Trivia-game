@@ -1,0 +1,14 @@
+.questions-feedback {
+  font-size: 1.3rem;
+  margin-top: -10px;
+}
+
+.score-feedback {
+  font-size: 1.3rem;
+  margin-top: 10px;
+}
+
+.feedback-total-score, .feedback-total-question {
+  font-size: 2.2rem;
+  font-weight: 700;
+}

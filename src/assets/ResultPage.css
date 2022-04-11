@@ -1,25 +1,36 @@
 .button-main {
   align-items: center;
+  background-color: rgb(233, 233, 233);
   display: flex;
   flex-direction: column;
+  height: 80vh;
+  text-align: center;
+  padding-bottom: 10vh;
 }
 
-.button-ranking {
+.button-play-again, .button-ranking {
   align-items: center;
-  background-color: lightblue;
+  background: linear-gradient(90deg, rgba(108,50,125,1) 0%, rgba(97,53,149,1) 29%, rgba(77,80,190,1) 72%, rgba(75,77,148,1) 99%);
+  border-radius: 5px;
+  color: white ;
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
-  width: 50%;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 10px 0;
+  opacity: 0.8;
+  padding: 10px;
+  transition: 0.15s;
+  width: 150px;
 }
 
-.button-play-again {
-  align-items: center;
-  background-color: lightblue;
+.button-play-again:hover, .button-ranking:hover {
+  box-shadow: 3px 3px 10px rgb(143, 143, 143);
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 20px;
-  width: 50%;
+  opacity: 1;
+}
+
+svg {
+  margin-top: 5px;
 }

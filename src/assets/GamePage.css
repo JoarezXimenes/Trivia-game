@@ -4,6 +4,11 @@
  usando o this para para o setInterval ser algo visto por todo o componente
 https://stackoverflow.com/questions/47254124/clear-interval-in-react-class */
 
+body {
+  background-color: rgb(233, 233, 233);
+  
+}
+
 .wrong {
   background-color: red;
   border: 3px solid red;
@@ -16,18 +21,23 @@ https://stackoverflow.com/questions/47254124/clear-interval-in-react-class */
 
 /* ============= QUESTION SECTION */
 .question-section {
-  background-color: rgb(233, 233, 233);
-  font-size: 1.2rem;
-  padding: 20px 30px;
+  align-items: center;
+  background-color: lightblue;
+  border-top: 5px solid black;
+  border-bottom: 5px solid black;
+  display: flex;
+  font-size: 1.1rem;
+  justify-content: space-around;
   text-align: center;
 }
 
 .question-card {
-  background-color: lightblue;
-  border: 5px solid black;
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px rgb(143, 143, 143);
-  padding: 10px;
+  padding: 0 10px;
+  width: 700px;
+}
+
+.question-category {
+  font-weight: bold;
 }
 
 .time-left {
@@ -41,8 +51,9 @@ https://stackoverflow.com/questions/47254124/clear-interval-in-react-class */
   background-color: rgb(233, 233, 233);
   display: flex;
   flex-direction: column;
-  height: 55vh;
+  height: 61vh;
   justify-content: flex-start;
+  padding-top: 5vh;
 }
 
 .answers-card {
@@ -52,17 +63,17 @@ https://stackoverflow.com/questions/47254124/clear-interval-in-react-class */
   box-shadow: 5px 5px 10px rgb(143, 143, 143);
   display: flex;
   flex-direction: column;
-  padding: 10px 15px;
-  width: 65%;
+  padding: 0 15px;
+  width: 50%;
 }
 
 .answers-card button {
   border-radius: 5px;
   color: black;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   margin: 10px 0;
-  padding: 10px 0;
+  padding: 2px 0;
 }
 
 .answers-card button:hover {

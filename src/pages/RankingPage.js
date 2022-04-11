@@ -27,7 +27,7 @@ class RankingPage extends Component {
   render() {
     return (
       <div className="container-ranking-page">
-        <h1 data-testid="ranking-title">Ranking</h1>
+        <h1 className="h1-ranking" data-testid="ranking-title">Ranking</h1>
         <table className="table-container">
           <thead>
             <tr>

@@ -155,14 +155,7 @@ class GamePage extends React.Component {
   }
 
   render() {
-    const {
-      options,
-      correctAnswer,
-      question,
-      category,
-      questionNumber,
-      timer,
-      showButton,
+    const { options, correctAnswer, question, category, questionNumber, timer, showButton,
     } = this.state;
     return (
       <>
@@ -170,17 +163,18 @@ class GamePage extends React.Component {
         <main>
           <article className="question-section">
             <div className="question-card">
-              <p data-testid="question-category">
+              <h3 data-testid="question-category">
                 { category }
-              </p>
+              </h3>
               <p data-testid="question-text">
                 {questionNumber}
                 .&nbsp;
                 { question }
               </p>
             </div>
-            <p>
+            <p className="timer">
               Tempo restante:
+              <br />
               <span className="time-left">
               &nbsp;
                 { timer }
