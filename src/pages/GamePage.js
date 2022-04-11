@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
+import he from 'he';
 import { updateScore } from '../actions/index';
 import '../assets/GamePage.css';
 import AnswerButton from '../components/AnswerButton';
@@ -176,7 +177,7 @@ class GamePage extends React.Component {
               <p data-testid="question-text">
                 {questionNumber}
                 .&nbsp;
-                { question }
+                { he.decode(question) }
               </p>
             </div>
             <p>
