@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import '../assets/ScoreMessage.css';
 
 class ScoreMessage extends Component {
   render() {
     const { score, assertions } = this.props;
     return (
       <>
-        <p>
+        <p className="questions-feedback">
           Você acertou
-          <span data-testid="feedback-total-question">
+          <span className="feedback-total-question" data-testid="feedback-total-question">
             &nbsp;
             { assertions }
           </span>
@@ -16,13 +17,13 @@ class ScoreMessage extends Component {
             ? ' questões'
             : ' questão' }
         </p>
-        <p>
-          Um total de
-          &nbsp;
-          <span data-testid="feedback-total-score">
+        <p className="score-feedback">
+          e fez total de
+          <span className="feedback-total-score" data-testid="feedback-total-score">
+            &nbsp;
             { score }
+            &nbsp;
           </span>
-          &nbsp;
           pontos
         </p>
       </>

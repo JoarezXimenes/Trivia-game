@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import '../assets/FeedbackMessage.css';
+
 class FeedbackMessage extends Component {
   // constructor(props) {
   //   super(props);
@@ -19,9 +21,9 @@ class FeedbackMessage extends Component {
 
   render() {
     return (
-      <h2 data-testid="feedback-text">
+      <h3 className="feedback-text" data-testid="feedback-text">
         { this.verifyAssertions() }
-      </h2>
+      </h3>
     );
   }
 }
